@@ -1,0 +1,6 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+# 可以在这里添加 commit message 验证逻辑
+# 例如使用 commitlint
+
