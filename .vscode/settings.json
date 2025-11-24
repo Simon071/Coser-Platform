@@ -1,0 +1,14 @@
+{
+  "terminal.integrated.defaultProfile.osx": "zsh",
+  "terminal.integrated.profiles.osx": {
+    "zsh": {
+      "path": "/bin/zsh",
+      "args": ["-l"]
+    }
+  },
+  "explorer.fileNesting.enabled": true,
+  "explorer.fileNesting.expand": false,
+  "explorer.fileNesting.patterns": {
+    "package.json": "package-lock.json, pnpm-lock.yaml, yarn.lock, bun.lockb, .npmrc, .yarnrc, .yarnrc.yml, .nvmrc, .node-version, eslint.config.*, .eslintrc.*, .eslintignore, prettier.config.*, .prettierrc.*, .prettierignore, tsconfig*.json, vitest.config.*, jest.config.*, lynx.config.*, .gitignore, .gitattributes, .editorconfig, .browserslistrc, .commitlintrc.*, commitlint.config.*, .lintstagedrc.*, lint-staged.config.*, husky.config.*, .huskyrc.*"
+  }
+}
