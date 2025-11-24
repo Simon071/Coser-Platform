@@ -27,6 +27,7 @@
     "@lynx-js/react-rsbuild-plugin": "^0.11.4",
     "@lynx-js/rspeedy": "^0.12.0",
     "@lynx-js/types": "3.4.11",
+    "@rsbuild/plugin-sass": "^1.4.0",
     "@rsbuild/plugin-type-check": "1.2.4",
     "@testing-library/jest-dom": "^6.9.0",
     "@types/react": "^18.3.25",

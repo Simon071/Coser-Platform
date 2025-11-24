@@ -1,56 +1,60 @@
-import { useCallback, useEffect, useState } from "@lynx-js/react";
+import { useEffect } from "@lynx-js/react";
+import { AuthProvider } from "~/context/AuthContext";
+import { initRouter, useRouter } from "~/utils/router";
+import { Home } from "~/pages/Home";
+import { Login } from "~/pages/Login";
+import { Profile } from "~/pages/Profile";
+import { Works } from "~/pages/Works";
+import { CreateWork } from "~/pages/CreateWork";
+import "~/App.scss";
 
-import "./App.scss";
-import arrow from "./assets/arrow.png";
-import lynxLogo from "./assets/lynx-logo.png";
-import reactLynxLogo from "./assets/react-logo.png";
-
-export function App(props: { onRender?: () => void }) {
-  const [alterLogo, setAlterLogo] = useState(false);
+function AppContent() {
+  const { matchedRoute, currentPath, navigate } = useRouter();
 
   useEffect(() => {
-    console.info("Hello, ReactLynx");
+    // 初始化路由
+    initRouter([
+      { path: "/", component: () => <Home /> },
+      { path: "/login", component: () => <Login /> },
+      { path: "/profile", component: () => <Profile />, requireAuth: true },
+      { path: "/works", component: () => <Works />, requireAuth: true },
+      {
+        path: "/create-work",
+        component: () => <CreateWork />,
+        requireAuth: true,
+      },
+    ]);
   }, []);
+
+  useEffect(() => {
+    // 如果找不到匹配的路由，跳转到首页
+    if (!matchedRoute && currentPath !== "/") {
+      navigate("/");
+    }
+  }, [matchedRoute, currentPath, navigate]);
+
+  // 如果找不到匹配的路由，显示 Home 页面
+  if (!matchedRoute) {
+    return (
+      <view className="App">
+        <Home />
+      </view>
+    );
+  }
+
+  return <view className="App">{matchedRoute.component()}</view>;
+}
+
+export function App(props: { onRender?: () => void }) {
+  useEffect(() => {
+    console.info("Coser Platform App loaded");
+  }, []);
+
   props.onRender?.();
 
-  const onTap = useCallback(() => {
-    "background only";
-    setAlterLogo((prevAlterLogo) => !prevAlterLogo);
-  }, []);
-
   return (
-    <view>
-      <view className="Background" />
-      <view className="App">
-        <view className="Banner">
-          <view className="Logo" bindtap={onTap}>
-            {alterLogo ? (
-              <image src={reactLynxLogo} className="Logo--react" />
-            ) : (
-              <image src={lynxLogo} className="Logo--lynx" />
-            )}
-          </view>
-          <text className="Title">React</text>
-          <text className="Subtitle">on Lynx</text>
-        </view>
-        <view className="Content">
-          <image src={arrow} className="Arrow" />
-          <text className="Description">Tap the logo and have fun!</text>
-          <text className="Hint">
-            Edit
-            <text
-              style={{
-                fontStyle: "italic",
-                color: "rgba(255, 255, 255, 0.85)",
-              }}
-            >
-              {" src/App.tsx "}
-            </text>
-            to see updates!
-          </text>
-        </view>
-        <view style={{ flex: 1 }} />
-      </view>
-    </view>
+    <AuthProvider>
+      <AppContent />
+    </AuthProvider>
   );
 }

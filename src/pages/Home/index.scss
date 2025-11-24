@@ -1,0 +1,65 @@
+.Home {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+}
+
+.Home__hero {
+  text-align: center;
+  color: white;
+  max-width: 600px;
+}
+
+.Home__title {
+  font-size: 48px;
+  font-weight: 700;
+  margin-bottom: 16px;
+  display: block;
+}
+
+.Home__subtitle {
+  font-size: 20px;
+  margin-bottom: 40px;
+  opacity: 0.9;
+  display: block;
+}
+
+.Home__actions {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.Home__button {
+  padding: 14px 32px;
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+
+  &--primary {
+    background: white;
+    color: #667eea;
+    border-color: white;
+
+    text {
+      color: #667eea;
+    }
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  text {
+    color: white;
+  }
+}

@@ -39,10 +39,22 @@ export default tseslint.config(
             "bindtouchstart",
             "bindtouchmove",
             "bindtouchend",
+            "bindinput",
+            "bindfocus",
+            "bindblur",
+            "bindconfirm",
           ],
         },
       ],
       "@typescript-eslint/explicit-module-boundary-types": "off",
+      "@typescript-eslint/no-explicit-any": "warn",
+      "@typescript-eslint/no-unused-vars": [
+        "warn",
+        {
+          argsIgnorePattern: "^_",
+          varsIgnorePattern: "^_",
+        },
+      ],
       "prettier/prettier": "error",
     },
     settings: {

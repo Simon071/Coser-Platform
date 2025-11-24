@@ -7,7 +7,23 @@
     "esModuleInterop": true,
     "skipLibCheck": true,
 
-    "noEmit": true
+    "noEmit": true,
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["src/*"],
+      "~context": ["src/context"],
+      "~context/*": ["src/context/*"],
+      "~utils": ["src/utils"],
+      "~utils/*": ["src/utils/*"],
+      "~types": ["src/types"],
+      "~types/*": ["src/types/*"],
+      "~pages": ["src/pages"],
+      "~pages/*": ["src/pages/*"],
+      "~components": ["src/components"],
+      "~components/*": ["src/components/*"],
+      "~assets": ["src/assets"],
+      "~assets/*": ["src/assets/*"]
+    }
   },
   "references": [{ "path": "./tsconfig.node.json" }, { "path": "./src" }],
   "files": []
